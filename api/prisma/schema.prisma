@@ -1,0 +1,182 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model directory {
+  id           Int            @id @default(autoincrement())
+  lot_no       Int?
+  name         String?        @db.VarChar(45)
+  isEntrance   Int?           @db.TinyInt
+  wing_id      Int?
+  mall_id      Int?
+  floor_id     Int?
+  floor        floor?         @relation(fields: [floor_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_directory_floor")
+  mall         mall?          @relation(fields: [mall_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_directory_mall")
+  wing         wing?          @relation(fields: [wing_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_directory_wing")
+  parking_log  parking_log[]
+  reservations reservations[]
+
+  @@index([mall_id], map: "fk_directory_mall_idx")
+  @@index([floor_id], map: "fk_directory_floor_idx")
+  @@index([wing_id], map: "fk_directory_wing_idx")
+}
+
+model lot {
+  id           Int            @id @default(autoincrement())
+  lot_no       Int
+  section      String         @db.VarChar(45)
+  wing_id      Int
+  floor_id     Int
+  mall_id      Int
+  floor        floor          @relation(fields: [floor_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_lot_floor")
+  mall         mall           @relation(fields: [mall_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_lot_mall")
+  wing         wing           @relation(fields: [wing_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_lot_wing")
+  parking_log  parking_log[]
+  reservations reservations[]
+
+  @@index([mall_id], map: "fk_lot_mall_idx")
+  @@index([floor_id], map: "fk_lot_floor_idx")
+  @@index([wing_id], map: "fk_lot_wing_idx")
+}
+
+model mall {
+  id        Int         @id @default(autoincrement())
+  name      String      @db.VarChar(45)
+  address   String      @db.VarChar(100)
+  admin     admin[]
+  directory directory[]
+  floor     floor[]
+  lot       lot[]
+  station   station[]
+  wing      wing[]
+}
+
+model parking_log {
+  id               Int           @id @default(autoincrement())
+  lot_id           Int
+  user_id          Int
+  directory_id     Int
+  entry_station_id Int?
+  exit_station_id  Int?
+  number_plate_id  Int
+  paid             Boolean       @default(false)
+  fees             Float?        @db.Float
+  entry_datetime   DateTime?     @db.DateTime(0)
+  exit_datetime    DateTime?     @db.DateTime(0)
+  reservation_id   Int?
+  directory        directory     @relation(fields: [directory_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_parking_log_directory")
+  entry_station    station?      @relation("parking_log_entry_station_idTostation", fields: [entry_station_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_parking_log_entry_station")
+  exit_station     station?      @relation("parking_log_exit_station_idTostation", fields: [exit_station_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_parking_log_exit_station")
+  lot              lot           @relation(fields: [lot_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_parking_log_lot")
+  number_plate     number_plate  @relation(fields: [number_plate_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_parking_log_np")
+  reservations     reservations? @relation(fields: [reservation_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_parking_log_reservation")
+  user             user          @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_parking_log_user")
+
+  @@index([lot_id], map: "fk_parking_log_lot_idx")
+  @@index([directory_id], map: "fk_parking_log_directory_idx")
+  @@index([user_id], map: "fk_parking_log_user_idx")
+  @@index([number_plate_id], map: "fk_parking_log_np_idx")
+  @@index([exit_station_id], map: "fk_parking_log_exit_station_idx")
+  @@index([entry_station_id], map: "fk_parking_log_entry_station_idx")
+  @@index([reservation_id], map: "fk_parking_log_reservation_idx")
+}
+
+model station {
+  id                                                Int           @id @default(autoincrement())
+  name                                              String?       @db.VarChar(45)
+  is_entrance                                       Boolean?
+  mall_id                                           Int?
+  parking_log_parking_log_entry_station_idTostation parking_log[] @relation("parking_log_entry_station_idTostation")
+  parking_log_parking_log_exit_station_idTostation  parking_log[] @relation("parking_log_exit_station_idTostation")
+  mall                                              mall?         @relation(fields: [mall_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_station_mall")
+
+  @@index([mall_id], map: "fk_station_mall_idx")
+}
+
+model user {
+  id           Int            @id @default(autoincrement())
+  name         String?        @db.VarChar(45)
+  email        String?        @db.VarChar(45)
+  username     String?        @db.VarChar(45)
+  password     String?        @db.VarChar(45)
+  contact      String?        @db.VarChar(45)
+  address      String?        @db.VarChar(45)
+  number_plate number_plate[]
+  parking_log  parking_log[]
+  reservations reservations[]
+}
+
+model admin {
+  id       Int     @id @default(autoincrement())
+  name     String? @db.VarChar(45)
+  email    String? @db.VarChar(45)
+  username String? @db.VarChar(45)
+  password String? @db.VarChar(45)
+  contact  String? @db.VarChar(45)
+  address  String? @db.VarChar(45)
+  mall_id  Int
+  mall     mall    @relation(fields: [mall_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_admin_mall")
+
+  @@index([mall_id], map: "fk_user_mall_idx")
+}
+
+model floor {
+  id        Int         @id @default(autoincrement())
+  floor_no  String?     @db.VarChar(45)
+  mall_id   Int?
+  directory directory[]
+  mall      mall?       @relation(fields: [mall_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_floor_mall")
+  lot       lot[]
+
+  @@index([mall_id], map: "fk_floor_mall_idx")
+}
+
+model number_plate {
+  id           Int            @id @default(autoincrement())
+  number_plate String?        @db.VarChar(45)
+  user_id      Int
+  user         user           @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_number_plate_user")
+  parking_log  parking_log[]
+  reservations reservations[]
+
+  @@index([user_id], map: "fk_number_plate_user_idx")
+}
+
+model wing {
+  id        Int         @id @default(autoincrement())
+  wing      String?     @db.VarChar(45)
+  mall_id   Int?
+  directory directory[]
+  lot       lot[]
+  mall      mall?       @relation(fields: [mall_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_wing_mall")
+
+  @@index([mall_id], map: "fk_wing_mall_idx")
+}
+
+model reservations {
+  id                   Int           @id @default(autoincrement())
+  lot_id               Int
+  user_id              Int
+  directory_id         Int
+  number_plate_id      Int
+  fees                 Float?        @db.Float
+  reservation_datetime DateTime?     @db.DateTime(0)
+  is_cancelled         Boolean
+  is_expired           Boolean?
+  is_fulfilled         Boolean?
+  parking_log          parking_log[]
+  directory            directory     @relation(fields: [directory_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_reservations_directory")
+  lot                  lot           @relation(fields: [lot_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_reservations_lot")
+  number_plate         number_plate  @relation(fields: [number_plate_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_reservations_np")
+  user                 user          @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_reservations_user")
+
+  @@index([directory_id], map: "fk_reservations_directory_idx")
+  @@index([lot_id], map: "fk_reservations_lot_idx")
+  @@index([number_plate_id], map: "fk_reservations_np_idx")
+  @@index([user_id], map: "fk_reservations_user_idx")
+}
