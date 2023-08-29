@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7e32384b-5d02-446f-b971-139093979b27" name="Changes" comment="update scanner">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/Scanner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Scanner.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1686109218" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1686109217" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": -1
+}]]></component>
+  <component name="ProjectId" id="2PBssz6yxAWyU58bZHddlC3CaCP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.14.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.14.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/syho0/OneDrive/Desktop/Code/capstone_project_scanner&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\syho0\\OneDrive\\Desktop\\Code\\capstone_project_scanner\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_scanner\api" />
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app\assets" />
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app\pages" />
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app\api" />
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app\assets" />
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app\assets\images" />
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app\contexts" />
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app\screens" />
+      <recent name="C:\Users\syho0\OneDrive\Desktop\Code\capstone_project_app\screens\Register" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e32384b-5d02-446f-b971-139093979b27" name="Changes" comment="" />
+      <created>1682942023336</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682942023336</updated>
+      <workItem from="1682942027561" duration="68000" />
+      <workItem from="1682942221567" duration="2092000" />
+      <workItem from="1682944336409" duration="38000" />
+      <workItem from="1682944376186" duration="1000" />
+      <workItem from="1682944385488" duration="4121000" />
+      <workItem from="1682967671057" duration="1863000" />
+      <workItem from="1682969613777" duration="8353000" />
+      <workItem from="1682990048866" duration="11527000" />
+      <workItem from="1683008323858" duration="2308000" />
+      <workItem from="1683011835799" duration="3733000" />
+      <workItem from="1683019459859" duration="949000" />
+      <workItem from="1683020456061" duration="19399000" />
+      <workItem from="1684073646305" duration="26000" />
+      <workItem from="1684119909427" duration="9879000" />
+      <workItem from="1684546594700" duration="12466000" />
+      <workItem from="1684721363176" duration="952000" />
+      <workItem from="1684722359930" duration="24115000" />
+      <workItem from="1684894502688" duration="852000" />
+      <workItem from="1684895853783" duration="253000" />
+      <workItem from="1684896146038" duration="70000" />
+      <workItem from="1684896237545" duration="48000" />
+      <workItem from="1684896316769" duration="230000" />
+      <workItem from="1684896568555" duration="555000" />
+      <workItem from="1684983055453" duration="42797000" />
+      <workItem from="1685243786006" duration="52659000" />
+      <workItem from="1685577820727" duration="59000" />
+      <workItem from="1685577892965" duration="8652000" />
+      <workItem from="1685697305838" duration="2337000" />
+      <workItem from="1685763587503" duration="5540000" />
+      <workItem from="1685808033613" duration="21418000" />
+      <workItem from="1686125375310" duration="2973000" />
+      <workItem from="1686293345830" duration="7724000" />
+      <workItem from="1687748257876" duration="3469000" />
+      <workItem from="1687755718355" duration="4255000" />
+      <workItem from="1689225409767" duration="3133000" />
+      <workItem from="1689302569242" duration="3944000" />
+      <workItem from="1692227144262" duration="56000" />
+    </task>
+    <task id="LOCAL-00001" summary="update scanner">
+      <created>1686433816015</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686433816015</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update scanner" />
+    <option name="LAST_COMMIT_MESSAGE" value="update scanner" />
+  </component>
+</project>
