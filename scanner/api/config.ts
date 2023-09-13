@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ip = "192.168.218.11";
+const ip = "192.168.101.13";
 const port = "4000";
 const ws_port = "3000";
 export const baseURL = `http://${ip}:${port}/api`;

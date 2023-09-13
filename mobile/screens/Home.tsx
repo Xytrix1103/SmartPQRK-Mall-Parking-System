@@ -36,17 +36,19 @@ const Home = ({navigation}: any) => {
     const {parked, setParked} = useContext(ParkedContext);
     const {reserved, setReserved} = useContext(ReservedContext);
 
+    //run onrefresh when navigating to this page from another page
+    useEffect(() => {
+        if(isFocused) {
+            onRefresh();
+        }
+    }, [isFocused])
+
     const onRefresh = useCallback(() => {
         console.log("Refreshing");
         setRefreshing(true);
         setTimeout(() => {
             updateUser();
             updateMalls();
-            if(user?.reservations?.[0].is_expired == false && user?.reservations?.[0].is_cancelled == false && user?.reservations?.[0].is_fulfilled == null) {
-                setReserved(true);
-            } else {
-                setReserved(false);
-            }
             setRefreshing(false);
         }, 2000);
     }, []);
@@ -85,25 +87,34 @@ const Home = ({navigation}: any) => {
     }, [mall])
 
     useEffect(() => {
-        let rID = 0;
+        let latestPark = null;
+        let latestRes = null;
+
+        if(user?.parking_log) {
+            latestPark = user?.parking_log?.[0];
+        }
 
         if(user?.reservations) {
-            const latest = user?.reservations[0];
-            if(latest != null) {
-                if(!latest.is_expired && !latest.is_cancelled && latest.is_fulfilled != null) {
-                    setReserved(true);
-                    setParked(false);
-                }
+            latestRes = user?.reservations[0];
+        }
+
+        console.log("Latest park: ", latestPark);
+
+        if(latestPark) {
+            if(latestPark.exit_datetime == null) {
+                console.log("Parked");
+                setParked(true);
+            } else {
+                setParked(false);
             }
         }
 
-        if(user?.parking_log) {
-            const latest = user?.parking_log[0];
-            if(latest != null) {
-                if(latest.exit_datetime == null) {
-                    setParked(true);
-                    setReserved(false);
-                }
+        if(latestRes && !parked) {
+            if(!latestRes.is_expired && !latestRes.is_cancelled && latestRes.is_fulfilled == null) {
+                console.log("Reserved");
+                setReserved(true);
+            } else {
+                setReserved(false);
             }
         }
     }, [user])
@@ -210,6 +221,7 @@ const Home = ({navigation}: any) => {
                             width: '100%',
                             alignItems: 'center',
                             justifyContent: 'center',
+                            marginTop: 20,
                         }}
                     >
                         <Surface style={styles.statusContainer}>
